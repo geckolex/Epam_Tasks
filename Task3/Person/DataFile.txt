@@ -1,0 +1,4 @@
+Mad Cat=assault
+Timber Wolf=assault
+Jenner=light
+Summoner=medium
