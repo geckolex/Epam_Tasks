@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Task1
 {
-    //[Homeworld("Holy Terra", rulebook_version = 6)]
+    [Homeworld("Holy Terra", rulebook_version = 6)]
     class Imperium : Program
     {
     }

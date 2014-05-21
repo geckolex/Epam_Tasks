@@ -9,14 +9,13 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            //PrintAuthorInfo(typeof(Imperium));
-            //PrintAuthorInfo(typeof(DarkEldar));
-            DarkEldar de = new DarkEldar();
-            de.Attr();
+            PrintAuthorInfo(typeof(Imperium));
+            PrintAuthorInfo(typeof(DarkEldar));
+
             Console.ReadKey();
         }
 
-        /*public static void PrintAuthorInfo(System.Type t)
+        public static void PrintAuthorInfo(System.Type t)
         {
             System.Console.WriteLine("Author information for {0}", t);
 
@@ -32,6 +31,6 @@ namespace Task1
                     System.Console.WriteLine("   {0}, version {1}", h.GetName(), h.rulebook_version);
                 }
             }
-        }*/
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Person
         static ArrayList value = new ArrayList();
 
 
-        public void CreateList()
+        public MemoryPersonAccessor()
         {
             name.Add("Campbell");
             name.Add("Snake");

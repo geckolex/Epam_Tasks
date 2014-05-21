@@ -71,7 +71,7 @@ namespace Task3
             connection.Close();
         }
 
-        public void Update(FieldInfo fieldInfo, Type t)
+        public void Update(FieldInfo fieldInfo, FieldInfo fieldInfo2, Type t)
         {
             Console.WriteLine("Для поиска введите имя");
             string n = Console.ReadLine();
@@ -80,6 +80,32 @@ namespace Task3
             System.Attribute[] attrtable = System.Attribute.GetCustomAttributes(t);
 
             connection.Open();
+
+            /*foreach (System.Attribute attrtab in attrtable)
+            {
+                if (attrtab is Attribut)
+                {
+                    Attribut attt = (Attribut)attrtab;
+                    System.Attribute[] attrcolum1 = System.Attribute.GetCustomAttributes(fieldInfo);
+                    foreach (System.Attribute attrcol1 in attrcolum1)
+                    {
+                        if (attrcol1 is Attribut)
+                        {
+                            Attribut attc1 = (Attribut)attrcol1;
+                            //String nm = Console.ReadLine();
+                            string query = @"UPDATE " + attt.TableName + " SET VALUE = '" + v + "' WHERE "+ attc1.Colum1 +" = '" + n + "'";
+                            SqlCeCommand command = new SqlCeCommand(query, connection);
+                            SqlCeDataReader read = command.ExecuteReader();
+                            while (read.Read())
+                            {
+                                Console.WriteLine("{0}={1}",
+                                                    read[0].ToString(),
+                                                    read[1].ToString());
+                            }
+                        }
+                    }
+                }
+            }*/
 
             foreach (System.Attribute attrtab in attrtable)
             {
@@ -92,16 +118,19 @@ namespace Task3
                         if (attrcol1 is Attribut)
                         {
                             Attribut attc1 = (Attribut)attrcol1;
-                            //String nm = Console.ReadLine();
-                            string query = @"UPDATE " + attt.TableName + " SET VALUE = '" + v + "' WHERE NAME = '" + n + "'";
-                            SqlCeCommand command = new SqlCeCommand(query, connection);
-                            SqlCeDataReader read = command.ExecuteReader();
-                            while (read.Read())
+                            System.Attribute[] attrcolum2 = System.Attribute.GetCustomAttributes(fieldInfo2);
+
+                            foreach (System.Attribute attrcol2 in attrcolum2)
                             {
-                                Console.WriteLine("{0}={1}",
-                                                    read[0].ToString(),
-                                                    read[1].ToString());
+                                if (attrcol2 is Attribut)
+                                {
+                                    Attribut attc2 = (Attribut)attrcol2;
+                                    string query = @"UPDATE " + attt.TableName + " SET " + attc2.Colum2 + " = '" + v + "' WHERE " + attc1.Colum1 + " = '" + n + "'";
+                                    SqlCeCommand command = new SqlCeCommand(query, connection);
+                                    command.ExecuteNonQuery();
+                                }
                             }
+
                         }
                     }
                 }
@@ -150,7 +179,7 @@ namespace Task3
             connection.Close();
         }
 
-        public void Delete(Type t)
+        public void Delete(FieldInfo fieldInfo, Type t)
         {
             Console.WriteLine("Для удаления введите имя");
             string n = Console.ReadLine();
@@ -162,9 +191,20 @@ namespace Task3
                 if (attr is Attribut)
                 {
                     Attribut att = (Attribut)attr;
-                    string query = @"DELETE FROM " + att.TableName + " WHERE NAME = '" + n + "'";
-                    SqlCeCommand command = new SqlCeCommand(query, connection);
-               }
+                    Attribute[] attrcolum1 = Attribute.GetCustomAttributes(fieldInfo);
+                    foreach (Attribute attrcol1 in attrcolum1)
+                    {
+                        if (attrcol1 is Attribut)
+                        {
+                            Attribut attc1 = (Attribut)attrcol1;
+                            Console.WriteLine("Введите Имя");
+                            String nm = Console.ReadLine();
+                            string query = @"DELETE FROM " + att.TableName + " WHERE " + attc1.Colum1 + "='" + n + "'";
+                            SqlCeCommand command = new SqlCeCommand(query, connection);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
             }
             connection.Close();
         }

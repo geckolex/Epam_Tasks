@@ -7,22 +7,18 @@ namespace Task1
 {
     class Homeworld : System.Attribute
     {
-        //string name;
-        public string city;
-        public string name1;
+        string name;
         public int rulebook_version;
 
-        public Homeworld(/*string name*/)
+        public Homeworld(string name)
         {
-            //this.name = name;
-            city = "";
+            this.name = name;
             rulebook_version = 0;
-            name1 = "";
         }
 
-        /*public string GetName()
+        public string GetName()
         {
             return name;
-        }*/
+        }
     }
 }

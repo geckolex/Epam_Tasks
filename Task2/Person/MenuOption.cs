@@ -9,6 +9,8 @@ namespace Person
     class MenuOption
     {
         String param = ConfigurationManager.AppSettings["Source"];
+        MemoryPersonAccessor mpa = new MemoryPersonAccessor();
+
         public void MainMenu()
         {
             Console.WriteLine("1 - Отобразить все значения");
@@ -34,9 +36,8 @@ namespace Person
                         fpa.Parser();
                         fpa.GetAll();
                     }
-                    else
+                    if (param == "Memory")
                     {
-                        MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.GetAll();
                     }
                     MainMenu();
@@ -50,9 +51,8 @@ namespace Person
                         fpa.Parser();
                         fpa.GetByName();
                     }
-                    else
+                    if (param == "Memory")
                     {
-                        MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.GetByName();
                     }
                     MainMenu();
@@ -66,9 +66,8 @@ namespace Person
                         fpa.Parser();
                         fpa.Update();
                     }
-                    else
+                    if (param == "Memory")
                     {
-                        MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.Update();
                     }
                     MainMenu();
@@ -82,9 +81,8 @@ namespace Person
                         fpa.Parser();
                         fpa.Delete();
                     }
-                    else
+                    if (param == "Memory")
                     {
-                        MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.Delete();
                     }
                     MainMenu();
@@ -98,9 +96,8 @@ namespace Person
                         fpa.Parser();
                         fpa.Add();
                     }
-                    else
+                    if (param == "Memory")
                     {
-                        MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.Add();
                     }
                     MainMenu();

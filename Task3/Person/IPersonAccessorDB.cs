@@ -10,8 +10,8 @@ namespace Task3
     {
         void GetAll(Type t); // получение все записи
         void GetByName(FieldInfo fieldInfo, Type t); // поиск значение по имени
-        void Update(FieldInfo fieldInfo, Type t); // обновить записи
+        void Update(FieldInfo fieldInfo, FieldInfo fieldInfo2, Type t); // обновить записи
         void Add(FieldInfo fieldInfo, FieldInfo fieldInfo2,Type t); // добвление новой записи
-        void Delete(Type t); // удалить запись
+        void Delete(FieldInfo fieldInfo, Type t); // удалить запись
     }
 }

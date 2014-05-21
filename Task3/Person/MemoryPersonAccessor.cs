@@ -8,22 +8,10 @@ namespace Task3
 {
     class MemoryPersonAccessor : IPersonAccessor
     {
-        static ArrayList name = new ArrayList();
-        static ArrayList value = new ArrayList();
+        static ArrayList name = new ArrayList() { "Campbell", "Snake", "Otacon", "Revolver" };
+        static ArrayList value = new ArrayList() { "colonel", "special agent", "analyst", "bad guy" };
 
-
-        public void CreateList()
-        {
-            name.Add("Campbell");
-            name.Add("Snake");
-            name.Add("Otacon");
-            name.Add("Revolver");
-            value.Add("colonel");
-            value.Add("special agent");
-            value.Add("analyst");
-            value.Add("bad guy");
-        }
-        
+       
         public void GetAll()
         {
             Console.WriteLine("Ввывод всех имен и значений");

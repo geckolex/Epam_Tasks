@@ -28,17 +28,29 @@ namespace Task3
                     break;
                 case "1":
                     Console.WriteLine("Отобразить все значения");
+                    
                     if (param == "File")
                     {
                         FilePersonAccessor fpa = new FilePersonAccessor();
                         fpa.Parser();
                         fpa.GetAll();
                     }
-                    else
+                    if (param == "Memory")
                     {
                         MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.GetAll();
                     }
+                    if (param == "ORM")
+                    {
+                        CustomORMAccessor coa = new CustomORMAccessor();
+                        coa.GetAll(typeof(Person));
+                    }
+                    if (param == "BD")
+                    {
+                        AdoNetAccessor ant = new AdoNetAccessor();
+                        ant.GetAll();
+                    }
+
                     MainMenu();
                     break;
 
@@ -50,10 +62,20 @@ namespace Task3
                         fpa.Parser();
                         fpa.GetByName();
                     }
-                    else
+                    if (param == "Memory")
                     {
                         MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.GetByName();
+                    }
+                    if (param == "ORM")
+                    {
+                        CustomORMAccessor coa = new CustomORMAccessor();
+                        coa.GetByName(typeof(Person).GetField("name"), typeof(Person));
+                    }
+                    if (param == "BD")
+                    {
+                        AdoNetAccessor ant = new AdoNetAccessor();
+                        ant.GetByName();
                     }
                     MainMenu();
                     break;
@@ -66,10 +88,20 @@ namespace Task3
                         fpa.Parser();
                         fpa.Update();
                     }
-                    else
+                    if (param == "Memory")
                     {
                         MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.Update();
+                    }
+                    if (param == "ORM")
+                    {
+                        CustomORMAccessor coa = new CustomORMAccessor();
+                        coa.Update(typeof(Person).GetField("name"), typeof(Person).GetField("value"), typeof(Person));
+                    }
+                    if (param == "BD")
+                    {
+                        AdoNetAccessor ant = new AdoNetAccessor();
+                        ant.Update();
                     }
                     MainMenu();
                     break;
@@ -82,10 +114,20 @@ namespace Task3
                         fpa.Parser();
                         fpa.Delete();
                     }
-                    else
+                    if (param == "Memory")
                     {
                         MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.Delete();
+                    }
+                    if (param == "ORM")
+                    {
+                        CustomORMAccessor coa = new CustomORMAccessor();
+                        coa.Delete(typeof(Person).GetField("name"), typeof(Person));
+                    }
+                    if (param == "BD")
+                    {
+                        AdoNetAccessor ant = new AdoNetAccessor();
+                        ant.Delete();
                     }
                     MainMenu();
                     break;
@@ -98,13 +140,24 @@ namespace Task3
                         fpa.Parser();
                         fpa.Add();
                     }
-                    else
+                    if (param == "Memory")
                     {
                         MemoryPersonAccessor mpa = new MemoryPersonAccessor();
                         mpa.Add();
                     }
+                    if (param == "ORM")
+                    {
+                        CustomORMAccessor coa = new CustomORMAccessor();
+                        coa.Add(typeof(Person).GetField("name"), typeof(Person).GetField("value"), typeof(Person));
+                    }
+                    if (param == "BD")
+                    {
+                        AdoNetAccessor ant = new AdoNetAccessor();
+                        ant.Add();
+                    }
                     MainMenu();
                     break;
+                
                 default:
                     Console.WriteLine("Выберите что-нибудь другое");
                     MainMenu();
